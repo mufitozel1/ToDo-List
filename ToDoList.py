@@ -20,6 +20,14 @@ def addtasks():
 def deletetask():
     selected=List.curselection()
     List.delete(selected[0])
+
+def markcompleted():
+    marked=List.curselection()
+    temp=marked[0]
+    temp_marked=List.get(marked)
+    temp_marked=temp_marked+" ✔"
+    List.delete(temp)
+    List.insert(temp,temp_marked)
            
 Frame1 = Frame()
 Frame1.pack()
@@ -36,5 +44,8 @@ AddButton.pack(side= LEFT)
 
 DeleteButton = Button(window, text="Remove A Task", command= deletetask)
 DeleteButton.pack(side=RIGHT)
+
+CheckButton = Button(window, text="Complete Task", command= markcompleted)
+CheckButton.pack(side=BOTTOM)
 
 window.mainloop()
